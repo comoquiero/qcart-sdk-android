@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Define an XML theme for the manifest -->
+    <style name="Theme.QCartTestApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- You can customize colors, shapes, typography here -->
+    </style>
+
+</resources>

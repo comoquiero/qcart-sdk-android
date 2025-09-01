@@ -1,7 +1,12 @@
+.gradle
 build
 central-staging
 release-upload
 target
 
+local.properties
+google-services.json
+
 *.jar
 *.zip
+* copy.*
