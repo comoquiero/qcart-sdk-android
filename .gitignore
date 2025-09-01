@@ -7,6 +7,5 @@ target
 local.properties
 google-services.json
 
-*.jar
 *.zip
 * copy.*
