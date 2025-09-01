@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32384371391",
+    "project_id": "qcarttestapp",
+    "storage_bucket": "qcarttestapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32384371391:android:ca0cf723ade2687507d40a",
+        "android_client_info": {
+          "package_name": "com.example.qcarttestapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMfs0kUut4NfURGuuKgqsAZt2-XhpQDu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

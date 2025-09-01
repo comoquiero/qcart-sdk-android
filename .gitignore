@@ -1,0 +1,7 @@
+build
+central-staging
+release-upload
+target
+
+*.jar
+*.zip
