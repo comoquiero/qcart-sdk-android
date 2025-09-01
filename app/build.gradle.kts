@@ -1,8 +1,8 @@
 val sdkMode: String = project.findProperty("sdkMode") as? String ?: "local"
 
 plugins {
-    id("com.android.application") version "8.3.0"
-    kotlin("android") version "1.9.0"
+    id("com.android.application")
+    kotlin("android")
 }
 
 android {
@@ -31,9 +31,7 @@ dependencies {
     when (sdkMode) {
         "local" -> implementation(project(":qcart-sdk"))
         "maven" -> implementation("app.qcart:deeplink-sdk:1.0.0")
-        "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:1.0.5")
-        // "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:main-SNAPSHOT")
-        // "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:7d6adbb")
+        "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:1.0.6")
     }
 
     // Jetpack Compose

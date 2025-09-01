@@ -3,13 +3,20 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { setUrl("https://jitpack.io") }
     }
     plugins {
         id("com.android.application") version "8.3.0"
         id("com.android.library") version "8.3.0"
         kotlin("android") version "1.9.0"
-        id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
 

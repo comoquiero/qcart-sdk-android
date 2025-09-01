@@ -28,48 +28,48 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
-// Only configure publishing for release tasks (skip debug/local builds)
 afterEvaluate {
-    if (!gradle.startParameter.taskNames.any { it.contains("assembleDebug") }) {
-        publishing {
-            publications {
-                create<MavenPublication>("release") {
-                    groupId = "app.qcart"
-                    artifactId = "deeplink-sdk"
-                    version = "1.0.0"
-                    artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "app.qcart"
+                artifactId = "deeplink-sdk"
+                version = "1.0.0"
 
-                    pom {
-                        name.set("QCart Deeplink SDK")
-                        description.set("SDK for handling deeplinks in QCart apps")
+                // Properly publish the AAR
+                from(components["release"])
+
+                pom {
+                    name.set("QCart Deeplink SDK")
+                    description.set("SDK for handling deeplinks in QCart apps")
+                    url.set("https://github.com/comoquiero/qcart")
+                    licenses {
+                        license {
+                            name.set("Apache-2.0 License")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("DaGsgm")
+                            name.set("Oscar Gardiazabal")
+                            email.set("oscar@qcart.app")
+                        }
+                    }
+                    scm {
+                        connection.set("scm:git:https://github.com/comoquiero/qcart.git")
+                        developerConnection.set("scm:git:https://github.com/comoquiero/qcart.git")
                         url.set("https://github.com/comoquiero/qcart")
-                        licenses {
-                            license {
-                                name.set("Apache-2.0 License")
-                                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                            }
-                        }
-                        developers {
-                            developer {
-                                id.set("DaGsgm")
-                                name.set("Oscar Gardiazabal")
-                                email.set("oscar@qcart.app")
-                            }
-                        }
-                        scm {
-                            connection.set("scm:git:https://github.com/comoquiero/qcart.git")
-                            developerConnection.set("scm:git:https://github.com/comoquiero/qcart.git")
-                            url.set("https://github.com/comoquiero/qcart")
-                        }
                     }
                 }
             }
-
-            repositories {
-                mavenLocal() // for MavenLocal testing
-            }
         }
+        repositories {
+            mavenLocal()
+        }
+    }
 
+    if (System.getenv("JITPACK") == null) {
         signing {
             useGpgCmd()
             sign(publishing.publications["release"])
