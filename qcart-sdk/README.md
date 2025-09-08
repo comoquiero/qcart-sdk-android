@@ -1,6 +1,6 @@
-# QCart SDK
+# Qcart SDK
 
-Android SDK for handling QCart deep links.
+Android SDK for handling Qcart deep links.
 
 ## Installation
 

@@ -40,8 +40,8 @@ afterEvaluate {
                 from(components["release"])
 
                 pom {
-                    name.set("QCart Deeplink SDK")
-                    description.set("SDK for handling deeplinks in QCart apps")
+                    name.set("Qcart Deeplink SDK")
+                    description.set("SDK for handling deeplinks in Qcart apps")
                     url.set("https://github.com/comoquiero/qcart")
                     licenses {
                         license {

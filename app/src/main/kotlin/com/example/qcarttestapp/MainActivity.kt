@@ -40,28 +40,29 @@ class MainActivity : AppCompatActivity() {
 
     // Deeplink handler
     private fun handleDeepLink(intent: Intent?) {
-        QcartDeeplinkSdk.handleIntent(intent) { skus: List<Pair<String, Int>> ->
-            if (skus.isNotEmpty()) {
-                skuTextView.text = skus.joinToString(", ") { "${it.first}:${it.second}" }
-            } else {
-                // This now executes if there are no SKUs
-                skuTextView.text = "Not skus link"
-            }
-        }
-    }
+        val result = QcartDeeplinkSdk.parseIntent(intent)
 
-    // IMPORT ASYNC LIBS TO USE THIS WITHOUT CALLBACKS
-    // private fun handleDeepLinkAsync(intent: Intent?) {
-    //     lifecycleScope.launch {
-    //         val skus = QcartDeeplinkSdk.handleIntent(intent)
+        // IF YOU WANT CHECK IF IT IS A QCART LINK FIRST
+        // val isQcart = result.isQcart
+        // if (isQcart) {
+
+        // PRINT EXAMPLE
+        skuTextView.text = buildString {
+            appendLine("url: ${result.url}")
+            appendLine()  // blank line
+            appendLine("pathSegments: ${result.pathSegments}")
+            appendLine()  // blank line
+            appendLine("queryParameters: ${result.queryParameters}")
+            appendLine()  // blank line
+            appendLine("fragmentParameters: ${result.fragmentParameters}")
+            appendLine()  // blank line
+            appendLine("isQcart: ${result.isQcart}")
+            appendLine()  // blank line
+            appendLine("skus: [${result.skus.joinToString { """{"sku":"${it.first}","quantity":${it.second}}""" }}]")
             
-    //         if (skus.isNotEmpty()) {
-    //             skuTextView.text = "Received SKUs: ${skus.joinToString(", ")}"
-    //             return@launch // SKUs handled, skip other links
-    //         }
+        }
 
-    //         // Handle other links if no SKUs
-    //         skuTextView.text = "Other link"
-    //     }
-    // }
+        // KEEP LINK HANDLING LOGIC HERE
+        // ...
+    }
 }

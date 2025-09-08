@@ -22,5 +22,5 @@ adb logcat | grep qcart
 
 ## Start the app with the deeplink
 ```
-adb shell am start -a android.intent.action.VIEW -d "https://test.abc?sku=111&sku=222" com.example.qcarttestapp
+adb shell am start -a android.intent.action.VIEW -d 'https://test.abc/path/name?qcart=true\&skus=111%2C222%3A3#hashparam=123' com.example.qcarttestapp
 ```
