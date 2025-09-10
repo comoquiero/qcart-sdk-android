@@ -7,11 +7,25 @@ import android.net.Uri
 object QcartDeeplinkSdk {
 
     /**
-     * Parses the Intent deep link and returns all info as a QcartDeeplinkResult
+     * Parses an Intent deep link.
      */
     fun parseIntent(intent: Intent?): QcartDeeplinkResult {
         val uri: Uri? = intent?.data
+        return parseUri(uri)
+    }
 
+    /**
+     * Parses a raw URL string.
+     */
+    fun parseUrl(url: String?): QcartDeeplinkResult {
+        val uri: Uri? = url?.let { Uri.parse(it) }
+        return parseUri(uri)
+    }
+
+    /**
+     * Internal function to handle Uri parsing logic.
+     */
+    private fun parseUri(uri: Uri?): QcartDeeplinkResult {
         // Parse query and fragment parameters
         val queryParams = getAllQueryParams(uri)
         val fragmentParams = getFragmentParams(uri)
@@ -26,7 +40,7 @@ object QcartDeeplinkSdk {
 
         // Merge SKUs: sum quantities if same SKU appears in both
         val mergedSkus = mutableMapOf<String, Int>()
-        for ((sku, qty) in fragmentSkus + querySkus) { // fragment first, then query
+        for ((sku, qty) in fragmentSkus + querySkus) {
             mergedSkus[sku] = (mergedSkus[sku] ?: 0) + qty
         }
 

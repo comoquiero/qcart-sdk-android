@@ -30,7 +30,7 @@ android {
 dependencies {
     when (sdkMode) {
         "local" -> implementation(project(":qcart-sdk"))
-        "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:1.0.7")
+        "jitpack" -> implementation("com.github.comoquiero:qcart-sdk-android:1.0.9")
         "maven" -> implementation("app.qcart:deeplink-sdk:1.0.0")
     }
 
